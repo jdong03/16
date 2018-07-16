@@ -11,7 +11,7 @@ import UIKit
 class MasterViewController: UITableViewController {
 
     var detailViewController: DetailViewController? = nil
-    var objects = [Any]()
+    var assignments = [Assignment]()
 
 
     override func viewDidLoad() {
@@ -39,17 +39,38 @@ class MasterViewController: UITableViewController {
 
     @objc
     func insertNewObject(_ sender: Any) {
-        objects.insert(NSDate(), at: 0)
-        let indexPath = IndexPath(row: 0, section: 0)
-        tableView.insertRows(at: [indexPath], with: .automatic)
-    }
+        let alert = UIAlertController(title: "Add Assignment", message: nil, preferredStyle: .alert)
+        alert.addTextField { (textField) in
+            textField.placeholder = "Assignment"
+        }
+        alert.addTextField { (textField) in
+            textField.placeholder = "Due Date"
+        }
+        alert.addTextField { (textField) in
+            textField.placeholder = "Subject"
+        }
+        alert.addTextField { (textField) in
+            textField.placeholder = "Subject"
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        alert.addAction(cancelAction)
+        UIAlertAction(title: "Add", style: .default) { (action) in
+            let assignmentTextField = alert.textFields![0] as UITextField
+            let dueDateTextField = alert.textFields![1] as UITextField
+            let subjectTextField = alert.textFields![2] as UITextField
+            let descriptionTextField = alert.textFields![3] as UITextField
+            let assignment = Assignment(name: assignmentTextField.text!, dueDate: dueDateTextField.text!, subject: subjectTextField.text!, description: descriptionTextField.text!)
+                self.assignments.append(assignment)
+                self.tableView.reloadData()
+                }
+            }
 
     // MARK: - Segues
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showDetail" {
             if let indexPath = tableView.indexPathForSelectedRow {
-                let object = objects[indexPath.row] as! NSDate
+                let object = assignments[indexPath.row]
                 let controller = (segue.destination as! UINavigationController).topViewController as! DetailViewController
                 controller.detailItem = object
                 controller.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem
@@ -65,13 +86,13 @@ class MasterViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return objects.count
+        return assignments.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
 
-        let object = objects[indexPath.row] as! NSDate
+        let object = assignments[indexPath.row] as! NSDate
         cell.textLabel!.text = object.description
         return cell
     }
@@ -83,13 +104,19 @@ class MasterViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            objects.remove(at: indexPath.row)
+            assignments.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
         }
     }
-
-
+    // To be able to reorder assignments
+    override func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        let objectToMove = assignments.remove(at: sourceIndexPath.row)
+        assignments.insert(objectToMove, at: destinationIndexPath.row)
+    }
+    
 }
+
+
 
