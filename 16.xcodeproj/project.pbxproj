@@ -13,6 +13,7 @@
 		7D65DEF220FCE45A00EC7051 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7D65DEF020FCE45A00EC7051 /* Main.storyboard */; };
 		7D65DEF420FCE45A00EC7051 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7D65DEF320FCE45A00EC7051 /* Assets.xcassets */; };
 		7D65DEF720FCE45A00EC7051 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7D65DEF520FCE45A00EC7051 /* LaunchScreen.storyboard */; };
+		7D65DEFF20FCE4DD00EC7051 /* Assignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D65DEFE20FCE4DD00EC7051 /* Assignment.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		7D65DEF320FCE45A00EC7051 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7D65DEF620FCE45A00EC7051 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7D65DEF820FCE45A00EC7051 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7D65DEFE20FCE4DD00EC7051 /* Assignment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assignment.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +59,7 @@
 			isa = PBXGroup;
 			children = (
 				7D65DEEA20FCE45900EC7051 /* AppDelegate.swift */,
+				7D65DEFE20FCE4DD00EC7051 /* Assignment.swift */,
 				7D65DEEC20FCE45900EC7051 /* MasterViewController.swift */,
 				7D65DEEE20FCE45A00EC7051 /* DetailViewController.swift */,
 				7D65DEF020FCE45A00EC7051 /* Main.storyboard */,
@@ -138,6 +141,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7D65DEFF20FCE4DD00EC7051 /* Assignment.swift in Sources */,
 				7D65DEEF20FCE45A00EC7051 /* DetailViewController.swift in Sources */,
 				7D65DEED20FCE45A00EC7051 /* MasterViewController.swift in Sources */,
 				7D65DEEB20FCE45900EC7051 /* AppDelegate.swift in Sources */,
